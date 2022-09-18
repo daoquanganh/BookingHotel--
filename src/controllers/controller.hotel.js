@@ -12,10 +12,9 @@ class HotelController {
                 rating: req.body.rating,
                 star: req.body.star
             }
-            const hotel = await model.Hotel.create(data).then(() => {
-                res.status(201).send(data)
-                console.log(data)   
-            });
+            const hotel = await model.Hotel.create(data)
+            res.status(201).send(data)
+            console.log(data)   
         } catch (e) {
             throw new Error(e)
         }
