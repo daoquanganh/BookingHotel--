@@ -12,17 +12,20 @@ Customer.init({
     },
     firstName: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     lastName: {
         type: DataTypes.STRING,
-        allowNull: false,
     },
     gender: {
-        type: DataTypes.CHAR(1),
-        allowNull: false,
+        type: DataTypes.STRING,
     },
     email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+    },
+    password: {
         type: DataTypes.STRING,
         allowNull: false,
     },

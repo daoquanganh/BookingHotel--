@@ -7,7 +7,7 @@ class BookingController {
             res.status(201).send(data)
             console.log(data)   
         } catch (e) {
-            throw new Error(e)
+            console.log(e);
         }
     }
 }

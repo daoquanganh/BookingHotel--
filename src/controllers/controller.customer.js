@@ -7,15 +7,17 @@ class CustomerController {
             res.status(201).send(customerData);
             console.log(customerData);
         } catch (e) {
-            throw new Error(e)
+            console.log(e);
         }
     }
     getCustomer = async (_req, res) => {
         try {
-            const customerData = await model.Customer.findAll({});
+            const customerData = await model.Customer.findAll();
             res.status(200).send(customerData);
+            console.log(customerData);
+
         } catch (e){
-            throw new Error(e)
+            console.log(e);
         }
     }
 }

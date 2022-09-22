@@ -13,17 +13,66 @@ class HotelController {
                 star: req.body.star
             }
             const hotel = await model.Hotel.create(data)
-            res.status(201).send(data)
-            console.log(data)   
+            res.status(201).send(hotel)
+            console.log(hotel)   
         } catch (e) {
-            throw new Error(e)
+            console.log(e);
+        }
+    }
+
+    getAllHotel = async (_req, res) => {
+        try {
+            const data = await model.Hotel.findAll();
+            res.status(200).send(data);
+            console.log(data);
+
+        } catch (e){
+            console.log(e);
+        }
+    }
+
+    getAllHotelbyRating = async (_req, res) => {
+        try {
+            const data = await model.Hotel.findAll({order: [
+                ['rating', 'DESC']
+            ]})
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    getAllHotelbyStar = async (_req, res) => {
+        try {
+            const data = await model.Hotel.findAll({order: [
+                ['star', 'DESC']
+            ]})
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    getHotelbyName = async (req, res) => {
+        try {
+            const data = await model.Hotel.findAll({"hotelName":req.params.hotelName});
+            res.status(200).send(data);
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    getHotelbyCity = async (req, res) => {
+        try {
+            const data = await model.Hotel.findAll({"city": req.params.city});
+            res.status(200).send(data);
+        } catch (e) {
+            console.log(e);
         }
     }
 
     // Image Controller
     storage = multer.diskStorage({
         destination: (req, file, cb) => {
-            cb(null, "./images")
+            cb(null, "./images/hotels")
         },
         filename: (req, file, cb) => {
             cb(null, Date.now() + path.extname(file.originalname))
