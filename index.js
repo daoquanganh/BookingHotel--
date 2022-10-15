@@ -6,7 +6,6 @@ import cors from 'cors';
 
 
 const app = express();
-const PORT = process.env.PORT;
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/v1', router);
@@ -16,5 +15,5 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 db.sync().then( () => {
     console.log(`Connected to db`);
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));
 })
