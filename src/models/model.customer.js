@@ -37,6 +37,9 @@ Customer.init({
     },
     bankCard: {
         type: DataTypes.STRING
+    },
+    userType: {
+        type: DataTypes.INTEGER
     }
 }, {
         sequelize: db,

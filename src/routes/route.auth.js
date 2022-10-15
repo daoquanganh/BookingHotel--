@@ -1,13 +1,12 @@
 import express from "express";
 import CustomerController from "../controllers/controller.customer.js";
-import passport from "../middlewares/auth.js";
-
 
 const router = express.Router();
 const customerController = new CustomerController();
+// Register a new User
+router.post('/register', customerController.register);
 
-router.get(
-    '/', 
-    passport.authenticate('jwt', {session: false}), customerController.getCustomer);
+// Login
+router.post('/login', customerController.login);
 
-export default router;
+export default router

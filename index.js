@@ -4,8 +4,9 @@ import router from './src/routes/index.js';
 import db from './src/configs/dbconfig.js';
 import cors from 'cors';
 
+
 const app = express();
-const PORT = process.env.port;
+const PORT = process.env.PORT;
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/v1', router);

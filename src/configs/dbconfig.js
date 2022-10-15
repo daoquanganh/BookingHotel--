@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-const db = new Sequelize(process.env.database, process.env.username, process.env.password, {
+const db = new Sequelize(process.env.DATABASE, process.env.USERNAME, process.env.PASSWORD, {
     storage: "./database.sqlite",
     dialect: "sqlite",
     logging: false
