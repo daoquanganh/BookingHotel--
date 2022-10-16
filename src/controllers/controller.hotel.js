@@ -31,21 +31,31 @@ class HotelController {
         }
     }
 
-    getAllHotelbyRating = async (_req, res) => {
+    HotelbyRating = async (req, res) => {
         try {
-            const data = await model.Hotel.findAll({order: [
-                ['rating', 'DESC']
-            ]})
+            const data = await model.Hotel.findAll({
+                where:  {city: req.params.city},
+                order: [
+                    ['rating', 'DESC']
+                ]
+            });
+            res.status(200).send(data);
+
         } catch (e) {
             console.log(e);
         }
     }
 
-    getAllHotelbyStar = async (_req, res) => {
+    HotelbyStar = async (req, res) => {
         try {
-            const data = await model.Hotel.findAll({order: [
-                ['star', 'DESC']
-            ]})
+            const data = await model.Hotel.findAll({
+                where: {city: req.params.city},
+                order: [
+                    ['star', 'DESC']
+                ]
+        });
+            res.status(200).send(data);
+
         } catch (e) {
             console.log(e);
         }
@@ -62,7 +72,7 @@ class HotelController {
 
     getHotelbyCity = async (req, res) => {
         try {
-            const data = await model.Hotel.findAll({"city": req.params.city});
+            const data = await model.Hotel.findAll({where: {city: req.params.city}});
             res.status(200).send(data);
         } catch (e) {
             console.log(e);

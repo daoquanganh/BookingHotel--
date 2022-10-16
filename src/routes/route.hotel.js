@@ -6,11 +6,11 @@ const hotelController = new HotelController();
 
 router.get('/', hotelController.getAllHotel);
 
-router.get('/byCity', hotelController.getHotelbyCity);
+router.get('/byCity/:city', hotelController.getHotelbyCity);
 
-router.get('/sortbyRating', hotelController.getAllHotelbyRating);
+router.get('/byRating/:city', hotelController.HotelbyRating);
 
-router.get('/sortbyStar', hotelController.getAllHotelbyStar);
+router.get('/byStar/:city', hotelController.HotelbyStar);
 
 router.get('/byName', hotelController.getHotelbyName);
 
